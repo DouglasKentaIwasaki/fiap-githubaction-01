@@ -1,30 +1,17 @@
-name: Meu Primeiro Workflow no GitHub Actions
+name: Teste Workflow
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main, developer ]
 
-  workflow_dispatch:
-
+# Definindo os jobs que 0 workflow executará
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  test_job:
+    name: Executando o Job de Teste
+    runs-on: self-hosted
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+    - name: Step 1
+      uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Teste de comando.
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    - name: Step 2
+      run : echo "Este é o nosso primeiro jobsef-hosted"
